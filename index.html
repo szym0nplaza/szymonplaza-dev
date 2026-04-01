@@ -20,6 +20,7 @@
   <div class="page-shell">
     <div class="ambient ambient-one"></div>
     <div class="ambient ambient-two"></div>
+    <div class="copy-toast" id="copy-toast" role="status" aria-live="polite"></div>
 
     <header class="site-header">
       <nav class="site-nav">
@@ -69,6 +70,12 @@
               </svg>
               <span class="sr-only">LinkedIn</span>
             </a>
+            <button class="icon-button" id="open-calendly-modal" type="button" aria-label="Open Calendly booking modal">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2.75A2.25 2.25 0 0 1 9.25.5h5.5A2.25 2.25 0 0 1 17 2.75V4h1.25A3.75 3.75 0 0 1 22 7.75v10.5A3.75 3.75 0 0 1 18.25 22H5.75A3.75 3.75 0 0 1 2 18.25V7.75A3.75 3.75 0 0 1 5.75 4H7Zm1.5 0V4h7V2.75a.75.75 0 0 0-.75-.75h-5.5a.75.75 0 0 0-.75.75M5.75 5.5a2.25 2.25 0 0 0-2.25 2.25V9h17V7.75a2.25 2.25 0 0 0-2.25-2.25ZM20.5 10.5h-17v7.75A2.25 2.25 0 0 0 5.75 20.5h12.5a2.25 2.25 0 0 0 2.25-2.25ZM7.75 13a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 7.75 13m4.25 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 13m4.25 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 .75-.75"/>
+              </svg>
+              <span class="sr-only">Calendly</span>
+            </button>
           </div>
         </div>
 
@@ -126,6 +133,7 @@
               </a>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -194,10 +202,48 @@
               Open to talking about engineering, SaaS platforms, architecture, security-minded backend work, and AI ideas.
             </p>
             <ul class="contact-list">
-              <li><a href="tel:+48537141588">+48 537 141 588</a></li>
-              <li><a href="mailto:szymon.plaza01@gmail.com">szymon.plaza01@gmail.com</a></li>
-              <li><a href="https://github.com/szym0nplaza" target="_blank" rel="noreferrer">github.com/szym0nplaza</a></li>
-              <li>Katowice, Poland</li>
+              <li class="contact-row">
+                <span class="contact-key">Phone</span>
+                <div class="contact-inline">
+                  <a class="contact-strong">+48 537 141 588</a>
+                  <button class="copy-icon-button" type="button" data-copy="+48 537 141 588" aria-label="Copy phone number">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M9 9.75A2.25 2.25 0 0 1 11.25 7.5h7.5A2.25 2.25 0 0 1 21 9.75v9A2.25 2.25 0 0 1 18.75 21h-7.5A2.25 2.25 0 0 1 9 18.75Zm2.25-.75a.75.75 0 0 0-.75.75v9c0 .41.34.75.75.75h7.5a.75.75 0 0 0 .75-.75v-9a.75.75 0 0 0-.75-.75ZM3 5.25A2.25 2.25 0 0 1 5.25 3h7.5A2.25 2.25 0 0 1 15 5.25V6h-1.5v-.75a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0-.75.75v9c0 .41.34.75.75.75H6V16.5h-.75A2.25 2.25 0 0 1 3 14.25Z"/>
+                    </svg>
+                    <span class="sr-only">Copy phone number</span>
+                  </button>
+                </div>
+              </li>
+              <li class="contact-row">
+                <span class="contact-key">Email</span>
+                <div class="contact-inline">
+                  <a class="contact-strong" href="mailto:szymon.plaza01@gmail.com">szymon.plaza01@gmail.com</a>
+                  <button class="copy-icon-button" type="button" data-copy="szymon.plaza01@gmail.com" aria-label="Copy email">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M9 9.75A2.25 2.25 0 0 1 11.25 7.5h7.5A2.25 2.25 0 0 1 21 9.75v9A2.25 2.25 0 0 1 18.75 21h-7.5A2.25 2.25 0 0 1 9 18.75Zm2.25-.75a.75.75 0 0 0-.75.75v9c0 .41.34.75.75.75h7.5a.75.75 0 0 0 .75-.75v-9a.75.75 0 0 0-.75-.75ZM3 5.25A2.25 2.25 0 0 1 5.25 3h7.5A2.25 2.25 0 0 1 15 5.25V6h-1.5v-.75a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0-.75.75v9c0 .41.34.75.75.75H6V16.5h-.75A2.25 2.25 0 0 1 3 14.25Z"/>
+                    </svg>
+                    <span class="sr-only">Copy email</span>
+                  </button>
+                </div>
+              </li>
+              <li class="contact-row">
+                <span class="contact-key">LinkedIn</span>
+                <div class="contact-inline">
+                  <a class="contact-strong" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">linkedin.com</a>
+                </div>
+              </li>
+              <li class="contact-row">
+                <span class="contact-key">GitHub</span>
+                <div class="contact-inline">
+                  <a class="contact-strong" href="https://github.com/szym0nplaza" target="_blank" rel="noreferrer">github.com/szym0nplaza</a>
+                </div>
+              </li>
+              <li class="contact-row">
+                <span class="contact-key">Location</span>
+                <div class="contact-inline">
+                  <span class="contact-strong">Katowice, Poland</span>
+                </div>
+              </li>
             </ul>
           </div>
 
@@ -223,7 +269,7 @@
           </form>
         </div>
 
-        <div class="bottom-strip reveal" id="blog">
+        <!-- <div class="bottom-strip reveal" id="blog">
           <div class="simple-panel">
             <p class="eyebrow">Blog</p>
             <h3>Architecture notes</h3>
@@ -233,9 +279,41 @@
             <p class="eyebrow">Quick facts</p>
             <p>Polish native, English B2, Merito University graduate, AWS Certified Developer Associate.</p>
           </div>
-        </div>
+        </div> -->
       </section>
     </main>
+
+    <div class="calendly-modal" id="calendly-modal" aria-hidden="true">
+      <div class="calendly-backdrop" data-close-calendly></div>
+      <div class="calendly-dialog" role="dialog" aria-modal="true" aria-labelledby="calendly-title">
+        <div class="calendly-dialog-header">
+          <div>
+            <p class="eyebrow">Calendly</p>
+            <h2 id="calendly-title">Book a meeting</h2>
+          </div>
+          <button class="calendly-close" id="close-calendly-modal" type="button" aria-label="Close Calendly modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="calendly-shell" id="calendly-shell">
+          <div class="calendly-loading" id="calendly-loading">
+            <span class="calendly-spinner" aria-hidden="true"></span>
+            <span>Loading Calendly...</span>
+          </div>
+          <iframe
+            id="calendly-embed"
+            class="calendly-frame"
+            data-src="https://calendly.com/szymon-plaza?hide_event_type_details=1&hide_gdpr_banner=1"
+            title="Calendly booking widget"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Szymon P&#322;aza. All rights reserved.</p>
+    </footer>
   </div>
 
   <script src="./script.js"></script>
