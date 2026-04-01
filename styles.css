@@ -168,7 +168,7 @@ main {
 }
 
 .section-block {
-  margin-top: 4.5rem;
+  margin-top: 3.8rem;
 }
 
 .hero-block {
@@ -265,6 +265,38 @@ button {
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2rem;
+}
+
+.scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-self: center;
+  grid-column: 1 / -1;
+  margin-top: 0.35rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+  animation: scroll-cue-bounce 2.2s ease-in-out infinite;
+}
+
+.scroll-cue svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+.scroll-cue.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
 }
 
 .button,
@@ -753,6 +785,17 @@ button {
   }
 }
 
+@keyframes scroll-cue-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+}
+
 @keyframes calendly-spin {
   to {
     transform: rotate(360deg);
@@ -795,7 +838,7 @@ button {
   }
 
   .section-block {
-    margin-top: 3.4rem;
+    margin-top: 2.9rem;
   }
 
   .hero-block {
@@ -817,6 +860,10 @@ button {
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 0.75rem;
+  }
+
+  .scroll-cue {
+    margin-top: 0.2rem;
   }
 
   .icon-button {

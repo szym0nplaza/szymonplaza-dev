@@ -5,6 +5,7 @@ const typewriterText = document.querySelector("#typewriter-text");
 const contactForm = document.querySelector("#contact-form");
 const copyIconButtons = [...document.querySelectorAll(".copy-icon-button")];
 const copyToast = document.querySelector("#copy-toast");
+const scrollCue = document.querySelector("#scroll-cue");
 const openCalendlyModalButton = document.querySelector("#open-calendly-modal");
 const closeCalendlyModalButton = document.querySelector("#close-calendly-modal");
 const calendlyModal = document.querySelector("#calendly-modal");
@@ -19,6 +20,7 @@ const typingPhrases = [
 
 if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   revealElements.forEach((element) => element.classList.add("is-visible"));
+  scrollCue?.classList.add("is-hidden");
 } else {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -59,6 +61,38 @@ if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-m
   window.addEventListener("wheel", unlockScrollGatedReveals, { passive: true, once: true });
   window.addEventListener("touchmove", unlockScrollGatedReveals, { passive: true, once: true });
   window.addEventListener("keydown", onKeydownUnlock);
+}
+
+if (scrollCue) {
+  const hideScrollCue = () => {
+    scrollCue.classList.add("is-hidden");
+    window.removeEventListener("scroll", hideScrollCue);
+    window.removeEventListener("wheel", hideScrollCue);
+    window.removeEventListener("touchmove", hideScrollCue);
+    window.removeEventListener("keydown", onScrollCueKeydown);
+  };
+
+  const onScrollCueKeydown = (event) => {
+    const scrollKeys = ["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", "Space"];
+
+    if (scrollKeys.includes(event.code) || scrollKeys.includes(event.key)) {
+      hideScrollCue();
+    }
+  };
+
+  scrollCue.addEventListener("click", () => {
+    window.scrollBy({ top: window.innerHeight * 0.55, behavior: "smooth" });
+    hideScrollCue();
+  });
+
+  if (window.scrollY > 12) {
+    hideScrollCue();
+  } else {
+    window.addEventListener("scroll", hideScrollCue, { passive: true, once: true });
+    window.addEventListener("wheel", hideScrollCue, { passive: true, once: true });
+    window.addEventListener("touchmove", hideScrollCue, { passive: true, once: true });
+    window.addEventListener("keydown", onScrollCueKeydown);
+  }
 }
 
 if (typewriterText && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
