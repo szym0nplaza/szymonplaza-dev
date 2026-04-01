@@ -1,4 +1,6 @@
 const revealElements = [...document.querySelectorAll(".reveal")];
+const scrollGatedRevealElements = revealElements.filter((element) => element.hasAttribute("data-reveal-after-scroll"));
+const immediateRevealElements = revealElements.filter((element) => !element.hasAttribute("data-reveal-after-scroll"));
 const typewriterText = document.querySelector("#typewriter-text");
 const contactForm = document.querySelector("#contact-form");
 
@@ -28,7 +30,28 @@ if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-m
     }
   );
 
-  revealElements.forEach((element) => observer.observe(element));
+  immediateRevealElements.forEach((element) => observer.observe(element));
+
+  const unlockScrollGatedReveals = () => {
+    scrollGatedRevealElements.forEach((element) => observer.observe(element));
+    window.removeEventListener("scroll", unlockScrollGatedReveals);
+    window.removeEventListener("wheel", unlockScrollGatedReveals);
+    window.removeEventListener("touchmove", unlockScrollGatedReveals);
+    window.removeEventListener("keydown", onKeydownUnlock);
+  };
+
+  const onKeydownUnlock = (event) => {
+    const scrollKeys = ["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", "Space"];
+
+    if (scrollKeys.includes(event.code) || scrollKeys.includes(event.key)) {
+      unlockScrollGatedReveals();
+    }
+  };
+
+  window.addEventListener("scroll", unlockScrollGatedReveals, { passive: true, once: true });
+  window.addEventListener("wheel", unlockScrollGatedReveals, { passive: true, once: true });
+  window.addEventListener("touchmove", unlockScrollGatedReveals, { passive: true, once: true });
+  window.addEventListener("keydown", onKeydownUnlock);
 }
 
 if (typewriterText && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
